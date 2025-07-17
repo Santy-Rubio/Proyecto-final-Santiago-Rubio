@@ -31,7 +31,7 @@ export const getAllProducts = async (queryParams = {}) => {
       ? query(productsCollection, ...constraints)
       : productsCollection;
 
-    const snapshot = await getDocs(q);
+    const snapshot = await getDoc(q);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   } catch (err) {
     console.error('Firestore getAllProducts error:', err.message);
