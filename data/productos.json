@@ -1,0 +1,38 @@
+[
+  {
+    "id": 1,
+    "title": "Intel Core i9-13900K",
+    "price": 599.99,
+    "category": "Procesadores"
+  },
+  {
+    "id": 2,
+    "title": "Intel Core i5-12400F",
+    "price": 179.99,
+    "category": "Procesadores"
+  },
+  {
+    "id": 3,
+    "title": "Intel Core i7-12700K",
+    "price": 379.99,
+    "category": "Procesadores"
+  },
+  {
+    "id": 4,
+    "title": "AMD Ryzen 7 5800X3D",
+    "price": 329.99,
+    "category": "Procesadores"
+  },
+  {
+    "id": 5,
+    "title": "Intel Core i9-13900K",
+    "price": 599.99,
+    "category": "Procesadores"
+  },
+  {
+    "id": 6,
+    "title": "AMD Ryzen 9 7900X",
+    "price": 429.99,
+    "category": "Procesadores"
+  }
+]
