@@ -47,7 +47,7 @@ export const getProductById = async (id) => {
     };
 
     const productRef = doc(db, 'products', id);
-    const productSnap = await getDocs(productRef);
+    const productSnap = await getDoc(productRef);
 
     if (!productSnap.exists()) {
       return null;
@@ -64,7 +64,7 @@ export const getProductById = async (id) => {
 export const getProductsByCategory = async (category) => {
   try {
     const q = query(productsCollection, where('category', '==', category));
-    const snapshot = await getDocs(q);
+    const snapshot = await getDoc(q);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   } catch (err) {
     console.error('Error al buscar por categoría:', err.message);
@@ -99,7 +99,7 @@ export const updateProduct = async (id, newData) => {
     };
 
     const docRef = doc(db, 'products', id);
-    const docSnap = await getDocs(docRef);
+    const docSnap = await getDoc(docRef);
 
     if (!docSnap.exists()) {
       return null;
@@ -134,7 +134,7 @@ export const updatePartialProduct = async (id, partialData) => {
     };
 
     const productRef = doc(db, 'products', id);
-    const docSnap = await getDocs(productRef);
+    const docSnap = await getDoc(productRef);
 
     if (!docSnap.exists()) {
       return null;
@@ -142,7 +142,7 @@ export const updatePartialProduct = async (id, partialData) => {
 
     await updateDoc(productRef, partialData);
 
-    const updated = await getDocs(productRef);
+    const updated = await getDoc(productRef);
     return { id: updated.id, ...updated.data() };
   } catch (err) {
     console.error('Firestore error:', err.message);
