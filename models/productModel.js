@@ -1,5 +1,5 @@
 import { db } from './data.js';
-import { collection, setDoc, getDoc, doc, updateDoc, addDoc, query, where, orderBy } from 'firebase/firestore';
+import { collection, setDoc, getDocs, doc, updateDoc, addDoc, query, where, orderBy } from 'firebase/firestore';
 
 const productsCollection = collection(db, 'products');
 
@@ -31,7 +31,7 @@ export const getAllProducts = async (queryParams = {}) => {
       ? query(productsCollection, ...constraints)
       : productsCollection;
 
-    const snapshot = await getDoc(q);
+    const snapshot = await getDocs(q);
     return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
   } catch (err) {
     console.error('Firestore getAllProducts error:', err.message);
@@ -47,7 +47,7 @@ export const getProductById = async (id) => {
     };
 
     const productRef = doc(db, 'products', id);
-    const productSnap = await getDoc(productRef);
+    const productSnap = await getDocs(productRef);
 
     if (!productSnap.exists()) {
       return null;
@@ -99,7 +99,7 @@ export const updateProduct = async (id, newData) => {
     };
 
     const docRef = doc(db, 'products', id);
-    const docSnap = await getDoc(docRef);
+    const docSnap = await getDocs(docRef);
 
     if (!docSnap.exists()) {
       return null;
@@ -134,7 +134,7 @@ export const updatePartialProduct = async (id, partialData) => {
     };
 
     const productRef = doc(db, 'products', id);
-    const docSnap = await getDoc(productRef);
+    const docSnap = await getDocs(productRef);
 
     if (!docSnap.exists()) {
       return null;
@@ -142,7 +142,7 @@ export const updatePartialProduct = async (id, partialData) => {
 
     await updateDoc(productRef, partialData);
 
-    const updated = await getDoc(productRef);
+    const updated = await getDocs(productRef);
     return { id: updated.id, ...updated.data() };
   } catch (err) {
     console.error('Firestore error:', err.message);
