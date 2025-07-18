@@ -11,12 +11,6 @@ export const getAllProducts = async (queryParams = {}) => {
 
     let constraints = [];
 
-    if (search) {
-      products = products.filter(p =>
-        p.title.toLowerCase().includes(search.toLowerCase())
-      );
-    };
-
     if (category) {
       constraints.push(where('category', '==', category.toLowerCase()));
     };
@@ -38,7 +32,15 @@ export const getAllProducts = async (queryParams = {}) => {
       : productsCollection;
 
     const snapshot = await getDocs(q);
-    return snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    let products = snapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+
+    if (search) {
+      products = products.filter(p =>
+        p.title.toLowerCase().includes(search.toLowerCase())
+      );
+    };
+
+    return products
   } catch (err) {
     console.error('Firestore getAllProducts error:', err.message);
     throw err;
