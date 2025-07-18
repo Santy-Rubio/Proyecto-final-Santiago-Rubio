@@ -7,7 +7,7 @@ const productsCollection = collection(db, 'products');
 // Obtener todos los productos
 export const getAllProducts = async (queryParams = {}) => {
   try {
-    const { category, min, max, sortField = 'price', sortOrder = 'asc' } = queryParams;
+    const { search, category, min, max, sortField = 'price', sortOrder = 'asc' } = queryParams;
 
     let constraints = [];
 
