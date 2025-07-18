@@ -3,7 +3,7 @@ import * as model from "../models/productModel.js";
 // GET
 export const getAllProducts = async (req, res) => {
   try {
-    const productos = await model.getAllProducts(req.query);
+    const products = await model.getAllProducts(req.query);
     res.status(200).json(products);
   } catch (err) {
     res.status(500).json({ error: 'Error al obtener productos' });
