@@ -7,9 +7,9 @@ Esta API permite gestionar productos de un e-commerce utilizando Firestore como 
 
 ## Autenticación
 - `POST /login` → Inicia sesión con usuario y contraseña. Devuelve un token JWT.
-
-- ```json
-- {"username": "admin" `, `"password": "123456"`}
+  
+```json
+ {"username": "admin" , "password": "123456"}
 ```
 ---
 
