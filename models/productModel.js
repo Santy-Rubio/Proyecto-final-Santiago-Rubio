@@ -12,7 +12,7 @@ export const getAllProducts = async (queryParams = {}) => {
     let constraints = [];
 
     if (search) {
-      productos = productos.filter(p =>
+      products = products.filter(p =>
         p.title.toLowerCase().includes(search.toLowerCase())
       );
     };
