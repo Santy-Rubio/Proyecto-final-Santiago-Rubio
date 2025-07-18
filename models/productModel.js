@@ -11,6 +11,12 @@ export const getAllProducts = async (queryParams = {}) => {
 
     let constraints = [];
 
+    if (search) {
+      productos = productos.filter(p =>
+        p.title.toLowerCase().includes(search.toLowerCase())
+      );
+    };
+
     if (category) {
       constraints.push(where('category', '==', category.toLowerCase()));
     };
